@@ -1,0 +1,5 @@
+# e:/instalados/python/dev/exercicios/modulos/arquivo_leitura.txt
+Meu nome é Felipe Batista Simão do Nascimento
+Eu tenho 31 anos e sou casado
+Me interesso por computação, tecnologia, arquitetura e desenvolvimento.
+Eu sou um analista de sistemas

@@ -1,0 +1,5 @@
+Conteúdo de exemplo para escrita em arquivo!
+Outro conteúdo
+Agora estou realizando append na escrita de arquivo
+teste1.txt
+
