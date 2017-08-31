@@ -13,7 +13,7 @@ def realizar_get(git_user_name):
     response = requests.get('https://api.github.com/users/' 
         + git_user_name + '/repos')
 
-    #print(response.json())
+    print(response.json())
         
     if response.status_code == 200 and len(response.json()) > 0:
         for repo in response.json():
