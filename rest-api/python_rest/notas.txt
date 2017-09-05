@@ -1,6 +1,9 @@
 Referência
 https://www.codementor.io/sagaragarwal94/building-a-basic-restful-api-in-python-58k02xsiq
 
+Referência Flask
+http://flask-restful.readthedocs.io/en/0.3.5/quickstart.html
+
 Instalar o sqlite3:
 https://www.sqlite.org/download.html [ sqlite-tools-win32-x86-3200100.zip (1.57 MiB)	]
 
