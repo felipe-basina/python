@@ -21,12 +21,6 @@ class Tracks(Resource):
         result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
         return jsonify(result)
         
-    def get_by_id(self, track_id):
-        conn = db_connect.connect()
-        query = conn.execute("select trackid, name, composer, unitprice from tracks where track_id = %d;" % int(track_id))
-        result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
-        return jsonify(result)
-        
 class TracksByTrackId(Resource):        
     def get(self, track_id):
         conn = db_connect.connect()
