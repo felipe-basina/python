@@ -1,1 +1,23 @@
+Referência
 https://www.codementor.io/sagaragarwal94/building-a-basic-restful-api-in-python-58k02xsiq
+
+Instalar o sqlite3:
+https://www.sqlite.org/download.html [ sqlite-tools-win32-x86-3200100.zip (1.57 MiB)	]
+
+Executar o sqlite3:
+<DIRETORIO_INSTALACAO_SQLITE3>\sqlite3.exe <DIRETORIO_ARQUIVO_>\chinook.db
+
+Exibir tabelas:
+.tables
+
+Exibir o schema para criação de uma tabela:
+.schema [ nome_tabela ]
+
+Executar a aplicação:
+ - Com o ambiente virtual (virtual environment) ativo, executar o arquivo:
+ rest_api.py
+ 
+ Endpoints expostos:
+    http://127.0.0.1:5002/employees
+    http://127.0.0.1:5002/tracks
+    http://127.0.0.1:5002/employees/8
