@@ -1,0 +1,14 @@
+Referência:
+    http://flask-restful.readthedocs.io/en/0.3.5/quickstart.html
+    
+1. Criar virtual environment
+<DIRETORIO_PROJETO>\virtualenv venv
+
+2. Iniciar virual environment
+<DIRETORIO_PROJETO>\venv\Scripts\activate
+
+3. Instalar dependências
+pip install flask-restful requests
+
+4. Iniciar a aplicação
+<DIRETORIO_PROJETO>\flask_rest_api.py
