@@ -1,1 +1,7 @@
 Referência: https://realpython.com/blog/python/introduction-to-mongodb-and-python/
+
+Defnir diretório para arquivos:
+mongod.exe --dbpath <DIRETORIO>\data\db
+
+Conectar:
+<DIRETORIO_MONGODB>\mongo.exe
