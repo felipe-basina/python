@@ -11,7 +11,6 @@ def recuperar_conexao_mongo_db():
     # Escolher a base de dados
     return client.pymongo_test
     
-    
 def inserir_registro():
     posts = recuperar_conexao_mongo_db().posts
 
@@ -31,7 +30,7 @@ def listar_registros():
     cursor = posts.find({})
     for document in cursor:
         #print(document)
-        print("{0} - {1}".format(document['title'], document['author']))
+        print("Title: {0} - Author: {1}".format(document['title'], document['author']))
         
 def remover_registros():
     posts = recuperar_conexao_mongo_db().posts
