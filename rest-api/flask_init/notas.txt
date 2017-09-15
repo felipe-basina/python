@@ -12,3 +12,12 @@ pip install flask-restful requests
 
 4. Iniciar a aplicação
 <DIRETORIO_PROJETO>\flask_rest_api.py
+
+Exemplos de chamada via curl
+curl -d "data=teste" -X PUT http://localhost:5000/todo0
+
+curl -H "Content-Type: application/json" -d "{\"nome\": \"felipe nascimento\", \"profissao\": \"analista/desenvolvedor\"}" -X POST http://localhost:5000/todo1
+
+curl -X DELETE localhost:5000/todo0
+
+curl localhost:5000/todo1
