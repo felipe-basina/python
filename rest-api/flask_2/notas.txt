@@ -1,0 +1,8 @@
+Referência:
+https://blog.syncano.io/flask-micro-framework-introduction/
+
+Parte 2:
+https://blog.syncano.io/intro-flask-pt-2-creating-writing-databases/
+
+Criando a base de dados:
+sqlite3 database.db < schema.sql  
