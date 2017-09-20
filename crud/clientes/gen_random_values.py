@@ -5,6 +5,9 @@ import datetime
 def gen_age():
     return random.randint(15, 99)
     
+def gen_int():
+    return random.randint(0, 3000)
+    
 def gen_cpf():
     return rstr.rstr('1234567890', 11)
     
