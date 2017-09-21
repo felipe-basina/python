@@ -16,6 +16,7 @@ class Connect(object):
             self.cursor.execute('SELECT SQLITE_VERSION()')
             self.data = self.cursor.fetchone()
             print("SQLite version: %s" % self.data)
+            self.criar_schema()
         except sqlite3.Error as e:
             print("Erro ao abrir banco. %s" % e)
             
@@ -54,11 +55,21 @@ class Connect(object):
             print("Aviso: O email deve ser único.")
             return False
 
+    def atualizar_um_registro(self, person, id):
+        sql_update = "UPDATE PERSON SET NAME = ?, USERNAME = ? WHERE ID = ?"
+        try:
+            self.cursor.execute(sql_update, (person['name'], person['username'], int(id)))
+            self.commit_db()
+            return "ok"
+        except:
+            return {"erro": "Nao foi possivel atualizar registro!" % email}
+            
     def recuperar_por_email(self, email):
         try:
-            sql = "SELECT * FROM PERSON WHERE EMAIL = " + email
-            return self.cursor.execute(sql).fetchone()
-        except:
+            sql = "SELECT * FROM PERSON WHERE EMAIL = ?"
+            retorno_sql = self.cursor.execute(sql, (email,)).fetchone()
+            return retorno_sql
+        except Exception as inst:
             return {"erro": "Nao foi possivel recuperar registro por email %s" % email}
             
     def recuperar_registros(self):
@@ -78,3 +89,11 @@ class Connect(object):
         except:
             print("Erro ao remover registros")
             return {"erro": "Nao foi possivel remover registros"}
+            
+    def contar_registros(self):
+        sql = "SELECT COUNT(*) FROM PERSON"
+        try:
+            return self.cursor.execute(sql).fetchone()[0]
+        except:
+            print("Erro ao contabilizar registros")
+            return {"erro": "Nao foi possivel contabilizar total de registros"}
