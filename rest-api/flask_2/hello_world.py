@@ -5,14 +5,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():  
-    return jsonify("Hello World!")
+    return jsonify({"msg":"Hello World!"})
 
 @app.route("/db")
 def conexao_db():
     print("Preparando para se conectar na base de dados...")
     db = Connect()
     db.close_db()
-    return jsonify("status:ok")
+    return jsonify({"status": "ok"})
 
 @app.route("/", methods=["POST"])    
 def inserir_db():
