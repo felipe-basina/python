@@ -34,6 +34,24 @@ def get_by_cliente_id(cliente_id):
         return jsonify({"status": "ok", "campanhas": campanha_lista, "total": len(campanha_lista)})
     except Exception as ex:
         return jsonify({"code": "ERR-0011", "error": "Erro ao recuperar campanhas para ID { %s }: %s" % (cliente_id, ex)})
+
+@app.route("/<int:campanha_id>", methods=["DELETE"])
+def delete_one(campanha_id):
+    try:
+        db = CampanhaDb(False)
+        
+        campanha = db.recuperar_campanha_por_id(campanha_id)
+        if not campanha:
+            return jsonify({"code": "ERR-0003", "error": "Nenhuma campanha encontrada com ID { %s }" % (campanha_id)})
+        
+        campanha_removida = db.remover_campanha(campanha_id)
+        if campanha_removida != True:
+            return jsonify({"code": "ERR-0003", "error": "Nao foi possivel remover a campanha { %s }: %s" % (campanha_id, campanha_removida)})    
+        
+        return jsonify({"status": "ok", "msg": "Campanha removida com sucesso"})
+    except Exception as ex:
+        traceback.print_exc()
+        return jsonify({"code": "ERR-0003", "error": "Erro ao remover campanha com ID { %s }: %s" % (campanha_id, ex)})
         
 @app.route("/", methods=["POST"])
 def insert_new():
@@ -79,8 +97,9 @@ def converter_campanhas_para_json(campanhas):
     campanha_lista = []
 
     if campanhas:
-        for _, nome, id_time, dt_inicio, dt_fim, _ in campanhas:
+        for id, nome, id_time, dt_inicio, dt_fim, _ in campanhas:
             dict = {}
+            dict['id'] = id
             dict['nome_campanha'] = nome
             dict['id_time'] = id_time
             dict['dt_inicio_vigencia'] = dt_inicio.strftime('%d/%m/%Y')

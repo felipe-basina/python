@@ -149,3 +149,21 @@ class CampanhaDb(object):
         except Exception as ex:
             traceback.print_exc()
             return {"campanhas": []}
+
+    def recuperar_campanha_por_id(self, id):
+        try:
+            sql = "SELECT * FROM CAMPANHA WHERE id = ?"
+            return self.db.cursor.execute(sql, (id,)).fetchone()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"campanhas": []}
+            
+    def remover_campanha(self, campanha_id):
+        try:
+            sql_delete = "DELETE FROM CAMPANHA WHERE id = ?"
+            self.db.cursor.execute(sql_delete, (campanha_id,))
+            self.db.commit_db()
+            return True
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel remover registro", "motivo": "Erro %s" % ex}

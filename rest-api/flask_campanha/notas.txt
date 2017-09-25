@@ -28,6 +28,9 @@ curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\":
 POST - Registro com data fim de vigência já cadastrada na base de dados
 curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-y\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
 
+DELETE - REMOVER REGISTRO POR ID (valor inteiro)
+curl -X DELETE localhost:5000/{campanha_id}
+
 6. ctrl + c para interromper a execução do script campanha_rest.py
 
 7. Desativar o virtual environment
