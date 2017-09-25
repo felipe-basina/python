@@ -8,15 +8,18 @@ class Connect(object):
     tb_name = 'campanha'
     base = 'campanha_db.db'
     
-    def __init__(self):
+    def __init__(self, remover_base=True):
         try:        
-            base_removida = self.remover_base_atual()
+            if remover_base:
+                base_removida = self.remover_base_atual()
+                print("Base removida? %s" % base_removida)
             
             self.conn = sqlite3.connect(self.base, detect_types=sqlite3.PARSE_DECLTYPES)
             self.cursor = self.conn.cursor()
             
-            if base_removida == True:
-                self.criar_schema()
+            self.criar_schema()
+            
+            if remover_base:
                 self.inserir_registros()
         except sqlite3.Error as e:
             print("Erro ao abrir banco. %s" % e)
@@ -70,9 +73,9 @@ class Connect(object):
         
 class CampanhaDb(object):
 
-    def __init__(self):
+    def __init__(self, remover_base=True):
         try:
-            self.db = Connect()
+            self.db = Connect(remover_base)
             print("Conectado na base dados!")
         except:
             print("Nao foi possivel se conectar com a base de dados!")

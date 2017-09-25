@@ -8,28 +8,10 @@ app = Flask(__name__)
 
 # https://stackoverflow.com/questions/6871016/adding-5-days-to-a-date-in-python
 
-# Define/Recupera conexao com a base de dados
-def get_db():
-    if not hasattr(g, 'campanha_db'):
-        g.sqlite_db = CampanhaDb()
-        print("Conexao CRIADA com sucesso!")
-    else:
-        print("Conexao RECUPERADA com sucesso!")
-    return g.sqlite_db
-
-'''
-@app.teardown_appcontext
-def teardown_db(exception):
-    print("Fechando conexao com a base de dados")
-    db = getattr(g, 'campanha_db', None)
-    if db is not None:
-        db.close_db()
-'''
-
 @app.route("/all")
 def get_all():
     try:
-        db = get_db()
+        db = CampanhaDb()
         campanhas = db.recuperar_campanhas()
         
         campanha_lista = []
@@ -46,7 +28,7 @@ def get_all():
 @app.route("/", methods=["POST"])
 def insert_new():
     try:
-        db = get_db()
+        db = CampanhaDb(False)
     
         json_request = request.get_json()
         print("Request %s" % json_request)
