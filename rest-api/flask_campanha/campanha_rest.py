@@ -41,7 +41,6 @@ def insert_new():
         db = CampanhaDb(False)
     
         json_request = request.get_json()
-        print("Request %s" % json_request)
         
         # 1. Verificar se existe alguma campanha com data fim de vigencia
         # igual ao valor enviado como parametro
@@ -91,10 +90,10 @@ def converter_campanhas_para_json(campanhas):
                 
     return campanha_lista
         
-def notificar_sistemas_alteracao_campanha(campanha, dt_inicio_original):
+def notificar_sistemas_alteracao_campanha(campanha, dt_fim_original):
     print("A campanha ID { %s } - NOME { %s } teve a sua data fim de vigencia alterada de { %s } para { %s }" %
         (campanha["id"], campanha["nome_campanha"], 
-        dt_inicio_original.strftime('%d/%m/%Y'),
+        dt_fim_original.strftime('%d/%m/%Y'),
         campanha["dt_fim_vigencia"].strftime('%d/%m/%Y')))
         
 app.run(debug=True)

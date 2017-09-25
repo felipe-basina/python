@@ -1,6 +1,9 @@
 GET - RECUPERAR TODOS OS REGISTROS
 localhost:5000/all
 
+GET - RECUPERAR REGISTRO POR CLIENTE ID (valor inteiro)
+localhost:5000/{cliente_id}
+
 POST - INSERIR NOVO REGISTRO
 curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-x\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
 
