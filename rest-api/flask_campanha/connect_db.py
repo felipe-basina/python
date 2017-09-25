@@ -141,3 +141,11 @@ class CampanhaDb(object):
             print("Excecao %s" % ex)
             traceback.print_exc()
             return {"campanhas": []}
+            
+    def recuperar_campanhas_por_cliente_id(self, cliente_id):
+        try:
+            sql = "SELECT * FROM CAMPANHA WHERE cliente_id = ? ORDER BY dt_fim_vigencia DESC"
+            return self.db.cursor.execute(sql, (cliente_id,)).fetchall()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"campanhas": []}

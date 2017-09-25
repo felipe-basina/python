@@ -25,6 +25,16 @@ def get_all():
     except Exception as ex:
         return jsonify({"code": "ERR-0001", "error": "Erro ao recuperar campanhas: %s" % ex})
 
+@app.route("/<int:cliente_id>")
+def get_by_cliente_id(cliente_id):
+    try:
+        db = CampanhaDb(False)
+        campanha_lista = converter_campanhas_para_json(db.recuperar_campanhas_por_cliente_id(cliente_id))
+        
+        return jsonify({"status": "ok", "campanhas": campanha_lista, "total": len(campanha_lista)})
+    except Exception as ex:
+        return jsonify({"code": "ERR-0011", "error": "Erro ao recuperar campanhas para ID { %s }: %s" % (cliente_id, ex)})
+        
 @app.route("/", methods=["POST"])
 def insert_new():
     try:
