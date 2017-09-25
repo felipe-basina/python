@@ -1,3 +1,21 @@
+============================
+ PROCEDIMENTOS PARA ETAPA 1
+============================
+Utilizando python >= 3 executar os seguintes passos:
+
+1. Criar virtual environment
+virtualenv venv
+
+2. Iniciar o virtual environment
+venv\Scripts\activate
+
+3. Com o virtual environment ativo instalar a dependência Flask
+pip install Flask
+
+4. Com a dependência instalada executar o script
+campanha_rest.py
+
+5. Via curl invocar os seguintes endereços
 GET - RECUPERAR TODOS OS REGISTROS
 localhost:5000/all
 
@@ -9,3 +27,8 @@ curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\":
 
 POST - Registro com data fim de vigência já cadastrada na base de dados
 curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-y\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
+
+6. ctrl + c para interromper a execução do script campanha_rest.py
+
+7. Desativar o virtual environment
+venv\Scripts\deactivate
