@@ -1,0 +1,2 @@
+POST
+curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-x\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/

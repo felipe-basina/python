@@ -1,6 +1,7 @@
 import sqlite3
 import datetime
 import os
+import traceback
 
 class Connect(object):
 
@@ -9,13 +10,14 @@ class Connect(object):
     
     def __init__(self):
         try:        
-            self.remover_base_atual()
+            base_removida = self.remover_base_atual()
             
             self.conn = sqlite3.connect(self.base, detect_types=sqlite3.PARSE_DECLTYPES)
             self.cursor = self.conn.cursor()
             
-            self.criar_schema()
-            self.inserir_registros()
+            if base_removida == True:
+                self.criar_schema()
+                self.inserir_registros()
         except sqlite3.Error as e:
             print("Erro ao abrir banco. %s" % e)
             
@@ -39,8 +41,10 @@ class Connect(object):
         try:
             os.remove(self.base)
             print("Base removida com sucesso!")
+            return True
         except:
             print("Nao foi possivel remover a base atual!")
+            return False
             
     def criar_schema(self, schema_name='sql/campanha_schema.sql'):
         try:
@@ -91,6 +95,7 @@ class CampanhaDb(object):
 
             return True
         except Exception as ex:
+            traceback.print_exc()
             return {"erro": "Nao foi possivel inserir novo registro", "motivo": "Erro %s" % ex}
             
     def atualizar_campanha(self, campanha):
@@ -123,4 +128,13 @@ class CampanhaDb(object):
             return self.db.cursor.execute(sql).fetchall()
         except Exception as ex:
             print("Excecao %s" % ex)
+            return {"campanhas": []}
+            
+    def recuperar_campanhas_ativas(self, dt_vigencia=datetime.date.today()):
+        try:
+            sql = "SELECT * FROM CAMPANHA WHERE dt_fim_vigencia >= ? ORDER BY dt_fim_vigencia DESC"
+            return self.db.cursor.execute(sql, (dt_vigencia,)).fetchall()
+        except Exception as ex:
+            print("Excecao %s" % ex)
+            traceback.print_exc()
             return {"campanhas": []}
