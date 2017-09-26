@@ -22,6 +22,7 @@ class Connect(object):
             if remover_base:
                 self.inserir_registros()
         except sqlite3.Error as e:
+            traceback.print_exc()
             print("Erro ao abrir banco. %s" % e)
             
     def get_db_version(self):
@@ -68,6 +69,7 @@ class Connect(object):
                 self.commit_db()
                 print("Dados inseridos do arquivo com sucesso.")
         except sqlite3.IntegrityError:
+            traceback.print_exc()
             print("Aviso: Erro ao inserir registros")
             return False
         
@@ -85,14 +87,13 @@ class CampanhaDb(object):
         
     def inserir_campanha(self, campanha):
         try:
-            sql_insert = "INSERT INTO CAMPANHA (nome_campanha, id_time, dt_inicio_vigencia, dt_fim_vigencia, cliente_id) VALUES (?, ?, ?, ?, ?)"
+            sql_insert = "INSERT INTO CAMPANHA (nome_campanha, id_time, dt_inicio_vigencia, dt_fim_vigencia) VALUES (?, ?, ?, ?)"
             
             self.db.cursor.execute(sql_insert, 
                 (campanha["nome_campanha"], 
                     campanha["id_time"], 
                     campanha["dt_inicio_vigencia"],
-                    campanha["dt_fim_vigencia"],
-                    campanha["cliente_id"]))
+                    campanha["dt_fim_vigencia"]))
                     
             self.db.commit_db()
 
@@ -167,3 +168,58 @@ class CampanhaDb(object):
         except Exception as ex:
             traceback.print_exc()
             return {"erro": "Nao foi possivel remover registro", "motivo": "Erro %s" % ex}
+            
+class ClienteDb(object):
+
+    def __init__(self, remover_base=True):
+        try:
+            self.db = Connect(remover_base)
+            print("Conectado na base dados!")
+        except:
+            print("Nao foi possivel se conectar com a base de dados!")
+            
+    def inserir_cliente(self, cliente):
+        try:
+            sql_insert = "INSERT INTO CLIENTE (nome_cliente, email, dt_nascimento, id_time) VALUES (?, ?, ?, ?)"
+            self.db.cursor.execute(sql_insert, 
+                                    (cliente["nome_cliente"],
+                                    cliente["email"],
+                                    cliente["dt_nascimento"],
+                                    cliente["id_time"]))
+            self.db.commit_db()
+            return True
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel cadastrar um novo cliente", "motivo": "Erro %s" % ex}
+            
+    def recuperar_cliente_por_email(self, email):
+        try:
+            sql = "SELECT * FROM CLIENTE WHERE email = ?"
+            return self.db.cursor.execute(sql, (email,)).fetchone()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel recuperar cliente com email %s" % email, "motivo": "Erro %s" % ex}
+            
+    def recuperar_clientes(self):
+        try:
+            sql = "SELECT * FROM CLIENTE ORDER BY dt_cadastro DESC"
+            return self.db.cursor.execute(sql,).fetchall()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel recuperar clientes cadastrados", "motivo": "Erro %s" % ex}
+            
+    def recuperar_times(self):
+        try:
+            sql = "SELECT * FROM TIIME ORDER BY id"
+            return self.db.cursor.execute(sql,).fetchall()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel recuperar times cadastrados", "motivo": "Erro %s" % ex}
+            
+    def recuperar_time_por_id(self, time_id):
+        try:
+            sql = "SELECT * FROM TIIME WHERE id = ?"
+            return self.db.cursor.execute(sql, (time_id,)).fetchone()
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel recuperar time com id %s" % id, "motivo": "Erro %s" % ex}

@@ -1,12 +1,13 @@
 from flask import Flask, jsonify, request, g
 from connect_db import *
+from cliente_rest import *
 
 import datetime
 import traceback
 
 app = Flask(__name__)
 
-# https://stackoverflow.com/questions/6871016/adding-5-days-to-a-date-in-python
+app.register_blueprint(cliente_rest, url_prefix='/cliente')
 
 @app.route("/all")
 def get_all():
@@ -55,10 +56,15 @@ def delete_one(campanha_id):
         
 @app.route("/", methods=["POST"])
 def insert_new():
-    try:
-        db = CampanhaDb(False)
-    
+    try:    
         json_request = request.get_json()
+        
+        db = ClienteDb(False)
+        time = db.recuperar_time_por_id(json_request["id_time"])
+        if 'erro' in time:
+            return jsonify({"code": "ERR-0002", "error": "Erro ao recuperar time: %s" % time})
+        
+        db = CampanhaDb(False)
         
         # 1. Verificar se existe alguma campanha com data fim de vigencia
         # igual ao valor enviado como parametro
@@ -97,7 +103,7 @@ def converter_campanhas_para_json(campanhas):
     campanha_lista = []
 
     if campanhas:
-        for id, nome, id_time, dt_inicio, dt_fim, _ in campanhas:
+        for id, nome, id_time, dt_inicio, dt_fim in campanhas:
             dict = {}
             dict['id'] = id
             dict['nome_campanha'] = nome

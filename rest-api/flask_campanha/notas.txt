@@ -23,10 +23,10 @@ GET - RECUPERAR REGISTRO POR CLIENTE ID (valor inteiro)
 localhost:5000/{cliente_id}
 
 POST - INSERIR NOVO REGISTRO
-curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-x\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
+curl -H "Content-Type: application/json" -d "{\"id_time\": 1, \"nome_campanha\": \"campanha-x\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
 
 POST - Registro com data fim de vigência já cadastrada na base de dados
-curl -H "Content-Type: application/json" -d "{\"id_time\": 2000, \"cliente_id\": 2, \"nome_campanha\": \"campanha-y\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
+curl -H "Content-Type: application/json" -d "{\"id_time\": 1, \"nome_campanha\": \"campanha-y\", \"dt_inicio_vigencia\": \"2017-10-25\", \"dt_fim_vigencia\": \"2017-10-29\"}" -X POST localhost:5000/
 
 DELETE - REMOVER REGISTRO POR ID (valor inteiro)
 curl -X DELETE localhost:5000/{campanha_id}
