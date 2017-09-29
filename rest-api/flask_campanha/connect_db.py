@@ -18,12 +18,22 @@ class Connect(object):
             self.cursor = self.conn.cursor()
             
             self.criar_schema()
+            self.set_fk_constraint()
             
             if remover_base:
                 self.inserir_registros()
         except sqlite3.Error as e:
             traceback.print_exc()
             print("Erro ao abrir banco. %s" % e)
+            
+    def set_fk_constraint(self):
+        try:
+            if self.conn:
+                self.cursor.execute('PRAGMA foreign_keys = ON')
+            return True
+        except Exception as ex:
+            traceback.print_exc()
+            return False
             
     def get_db_version(self):
         if self.conn:
@@ -223,3 +233,13 @@ class ClienteDb(object):
         except Exception as ex:
             traceback.print_exc()
             return {"erro": "Nao foi possivel recuperar time com id %s" % id, "motivo": "Erro %s" % ex}
+            
+    def remover_cliente_por_id(self, cliente_id):
+        try:
+            sql_delete = "DELETE FROM CLIENTE WHERE id = ?"
+            self.db.cursor.execute(sql_delete, (cliente_id,))
+            self.db.commit_db()
+            return True
+        except Exception as ex:
+            traceback.print_exc()
+            return {"erro": "Nao foi possivel remover cliente com id %d : %s" % (cliente_id, ex)}

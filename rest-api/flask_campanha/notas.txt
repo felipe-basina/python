@@ -35,3 +35,19 @@ curl -X DELETE localhost:5000/{campanha_id}
 
 7. Desativar o virtual environment
 venv\Scripts\deactivate
+
+============================
+ PROCEDIMENTOS PARA ETAPA 2
+============================
+1. Via curl invocar os seguintes endereços
+GET - RECUPERAR TODOS OS REGISTROS CLIENTES
+curl localhost:5000/cliente/all
+
+GET - RECUPERAR TODOS OS REGISTROS TIMES
+curl localhost:5000/cliente/all/time
+
+POST - INSERIR NOVO REGISTRO
+curl -H "Content-Type: application/json" -d "{\"nome_cliente\": \"Felipe\", \"email\": \"felipe@gmail.com\", \"dt_nascimento\": \"1986-06-16\", \"id_time\": 1}" -X POST localhost:5000/cliente/
+
+DELETE - REMOVER REGISTRO POR ID (valor inteiro)
+curl -X DELETE localhost:5000/cliente/{cliente_id}
