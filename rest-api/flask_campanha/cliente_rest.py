@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
 from datetime import datetime
 from connect_db import *
+from aux_modulos import *
 
 import traceback
 
@@ -34,7 +35,9 @@ def insert_new():
             return jsonify({"msg": "Nao foi possivel realizar o cadastro do novo cliente. Por favor, tente novamente", 
                             "details": cliente_cadastrado})
             
-        return jsonify({"status": "ok", "msg": "Cliente cadastrado com sucesso"})
+        campanhas = recuperar_campanhas_por_id_time(json_request["id_time"])
+            
+        return jsonify({"status": "ok", "campanhas": campanhas})
     except Exception as ex:
         traceback.print_exc()
         return jsonify({"erro": "Nao foi possivel realizar o cadastro", "msg": "%s" % ex})
@@ -72,35 +75,3 @@ def delete_one(cliente_id):
     except Exception as ex:
         traceback.print_exc()
         return jsonify({"erro": "Nao foi possivel remover o cliente: " % ex})
-       
-def converter_clientes_para_json(clientes):
-    cliente_lista = []
-
-    if clientes:
-        for id, nome, email, dt_nascimento, id_time, dt_cadastro in clientes:
-            dict = {}
-            dict['id'] = id
-            dict['nome_cliente'] = nome
-            dict['email'] = email
-            dict['dt_nascimento'] = dt_nascimento.strftime('%d/%m/%Y')
-            dict['id_time'] = id_time
-            
-            dt_cadastro_ts = datetime.datetime.strptime(dt_cadastro, '%Y-%m-%d %H:%M:%S')
-            dict['dt_cadastro'] = dt_cadastro_ts.strftime('%d/%m/%Y %H:%M:%S')
-            
-            cliente_lista.append(dict)
-                
-    return cliente_lista
-
-def converter_times_para_json(times):
-    time_lista = []
-
-    if times:
-        for id, nome in times:
-            dict = {}
-            dict['id'] = id
-            dict['nome_time'] = nome
-            
-            time_lista.append(dict)
-                
-    return time_lista

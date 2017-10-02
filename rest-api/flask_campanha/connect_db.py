@@ -179,6 +179,14 @@ class CampanhaDb(object):
             traceback.print_exc()
             return {"erro": "Nao foi possivel remover registro", "motivo": "Erro %s" % ex}
             
+    def recuperar_campanhas_por_id_time(self, id_time):
+        try:
+            sql = "SELECT * FROM CAMPANHA WHERE id_time = ?"
+            return self.db.cursor.execute(sql, (id_time,)).fetchall()
+        except Exception as ex:
+            traceback.print_exc()
+            return []
+            
 class ClienteDb(object):
 
     def __init__(self, remover_base=True):

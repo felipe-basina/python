@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, g
 from connect_db import *
 from cliente_rest import *
+from aux_modulos import *
 
 import datetime
 import traceback
@@ -98,27 +99,5 @@ def insert_new():
     except Exception as ex:
         traceback.print_exc()
         return jsonify({"code": "ERR-0002", "error": "Erro ao inserir nova campanha: %s" % ex})
-        
-def converter_campanhas_para_json(campanhas):
-    campanha_lista = []
-
-    if campanhas:
-        for id, nome, id_time, dt_inicio, dt_fim in campanhas:
-            dict = {}
-            dict['id'] = id
-            dict['nome_campanha'] = nome
-            dict['id_time'] = id_time
-            dict['dt_inicio_vigencia'] = dt_inicio.strftime('%d/%m/%Y')
-            dict['dt_fim_vigencia'] = dt_fim.strftime('%d/%m/%Y')
-            
-            campanha_lista.append(dict)
-                
-    return campanha_lista
-        
-def notificar_sistemas_alteracao_campanha(campanha, dt_fim_original):
-    print("A campanha ID { %s } - NOME { %s } teve a sua data fim de vigencia alterada de { %s } para { %s }" %
-        (campanha["id"], campanha["nome_campanha"], 
-        dt_fim_original.strftime('%d/%m/%Y'),
-        campanha["dt_fim_vigencia"].strftime('%d/%m/%Y')))
         
 app.run(debug=True)
