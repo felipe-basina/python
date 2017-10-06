@@ -1,10 +1,13 @@
-# Referência: https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
+# Referência: http://www.potilivre.org/hudsonbrendon/384-trabalhando-com-python-e-mongodb
 
 Definir diretório para arquivos:
 mongod.exe --dbpath <DIRETORIO>\data\db
 
 Conectar:
 <DIRETORIO_MONGODB>\mongo.exe
+
+# Instalar a dependência pymongo
+pip install pymongo
 
 Comandos:
 

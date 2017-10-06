@@ -20,6 +20,6 @@ for x in range(1, max_range):
     #Step 3: Insert business object directly into MongoDB via insert_one
     result = db.reviews.insert_one(business)
     #Step 4: Print to the console the ObjectID of the new document
-    print('Created {0} of {1} as {2}'.format(x, max_range, result.inserted_id))
+    print('Created {0} of {1} as {2}'.format(x, (max_range - 1), result.inserted_id))
 #Step 5: Tell us that you are done
-print('finished creating %s business reviews' % max_range)
+print('finished creating %s business reviews' % (max_range - 1))
