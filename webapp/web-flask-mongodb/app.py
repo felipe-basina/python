@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from fabric.api import *
 
 import traceback
 
@@ -31,7 +32,7 @@ def addMachine():
         return jsonify(status='OK',message='inserted successfully')
 
     except Exception as e:
-        return jsonify(status='ERROR',message=str(e))
+        return jsonify(status='ERROR', message=str(e))
         
 @app.route("/getMachineList", methods=['POST'])
 def getMachineList():
@@ -72,7 +73,7 @@ def getMachine():
         traceback.print_exc()
         return str(e)
     
-@app.route('/updateMachine',methods=['POST'])
+@app.route('/updateMachine', methods=['POST'])
 def updateMachine():
     try:
         machineInfo = request.json['info']
@@ -117,8 +118,8 @@ def deleteMachine():
     try:
         machineId = request.json['id']
         db.Machines.remove({'_id': ObjectId(machineId)})
-        return jsonify(status='OK',message='deletion successful')
+        return jsonify(status='OK', message='Deletion successful')
     except Exception as e:
-        return jsonify(status='ERROR',message=str(e))
+        return jsonify(status='ERROR', message=str(e))
     
 app.run(host='0.0.0.0')

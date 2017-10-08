@@ -5,4 +5,4 @@ virtualenv venv
 venv\Scripts\activate
 
 2. Instalar dependências
-pip install flask, pymongo
+pip install flask, pymongo, fabric3
