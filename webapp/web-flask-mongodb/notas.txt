@@ -1,1 +1,8 @@
 Referência: http://codehandbook.org/creating-a-web-app-using-angularjs-python-mongodb/
+
+1. Criar e ativar o virtual environment
+virtualenv venv
+venv\Scripts\activate
+
+2. Instalar o Flask
+pip install flask
