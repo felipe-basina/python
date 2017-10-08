@@ -1,0 +1,1 @@
+Referência: http://codehandbook.org/creating-a-web-app-using-angularjs-python-mongodb/
