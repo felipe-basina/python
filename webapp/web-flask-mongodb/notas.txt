@@ -1,4 +1,5 @@
 ﻿Referência: http://codehandbook.org/creating-a-web-app-using-angularjs-python-mongodb/
+Referência para testes de unidade: http://pythonclub.com.br/tdd-com-python-e-flask.html
 
 1. Criar e ativar o virtual environment
 virtualenv venv
