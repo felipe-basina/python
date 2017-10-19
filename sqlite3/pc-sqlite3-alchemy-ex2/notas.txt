@@ -1,0 +1,4 @@
+Referência: http://pythoncentral.io/sqlalchemy-orm-examples/
+
+Instalar dependência:
+pip install sqlalchemy
