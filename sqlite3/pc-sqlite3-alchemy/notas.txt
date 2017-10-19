@@ -1,0 +1,4 @@
+Referência: http://pythoncentral.io/introductory-tutorial-python-sqlalchemy/
+
+1. Instalar dependências
+pip install sqlalchemy
