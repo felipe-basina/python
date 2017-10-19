@@ -19,7 +19,7 @@ def showMachineList():
 @app.route("/addMachine", methods=['POST'])
 def addMachine():
     try:
-        json_data = request.json['info']
+        json_data = request.get_json()["info"]
         deviceName = json_data['device']
         ipAddress = json_data['ip']
         userName = json_data['username']
@@ -41,7 +41,6 @@ def getMachineList():
         
         machineList = []
         for machine in machines:
-            #print(machine)
             machineItem = {
                     'device':machine['device'],
                     'ip':machine['ip'],
@@ -58,7 +57,8 @@ def getMachineList():
 @app.route('/getMachine', methods=['POST'])
 def getMachine():
     try:
-        machineId = request.json['id']
+        #machineId = request.json['id']
+        machineId = request.get_json()['id']
         machine = db.Machines.find_one({'_id': ObjectId(machineId)})
         machineDetail = {
                 'device':machine['device'],
@@ -76,7 +76,7 @@ def getMachine():
 @app.route('/updateMachine', methods=['POST'])
 def updateMachine():
     try:
-        machineInfo = request.json['info']
+        machineInfo = request.get_json()['info']
         machineId = machineInfo['id']
         device = machineInfo['device']
         ip = machineInfo['ip']
@@ -92,7 +92,7 @@ def updateMachine():
 @app.route("/execute", methods=['POST'])
 def execute():
     try:
-        machineInfo = request.json['info']
+        machineInfo = request.get_json()['info']
         ip = machineInfo['ip']
         username = machineInfo['username']
         password = machineInfo['password']
@@ -116,7 +116,8 @@ def execute():
 @app.route("/deleteMachine", methods=['POST'])
 def deleteMachine():
     try:
-        machineId = request.json['id']
+        #machineId = request.json['id']
+        machineId = request.get_json()['id']
         db.Machines.remove({'_id': ObjectId(machineId)})
         return jsonify(status='OK', message='Deletion successful')
     except Exception as e:
