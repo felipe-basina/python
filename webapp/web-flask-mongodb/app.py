@@ -29,7 +29,7 @@ def addMachine():
         db.Machines.insert_one({
             'device':deviceName,'ip':ipAddress,'username':userName,'password':password,'port':portNumber
             })
-        return jsonify(status='OK',message='inserted successfully')
+        return jsonify(status='OK', message='inserted successfully')
 
     except Exception as e:
         return jsonify(status='ERROR', message=str(e))
@@ -41,7 +41,7 @@ def getMachineList():
         
         machineList = []
         for machine in machines:
-            print(machine)
+            #print(machine)
             machineItem = {
                     'device':machine['device'],
                     'ip':machine['ip'],
