@@ -55,14 +55,14 @@ class CpfBlacklistCase(unittest.TestCase):
         self.assertIn("application/json", response.content_type)
         self.assertEqual("FREE", data)
         
-    def test_verificar_cpf_blacklist_cpf_parametro_invalido(self):       
+    def test_verificar_cpf_blacklist_parametro_invalido(self):       
         response = self.test_app.get("/parametro")
 
         data = json.loads(response.get_data(as_text = True))
         
         self.assertEqual(200, response.status_code)
         self.assertIn("application/json", response.content_type)
-        self.assertEqual("BLOCK", data)
+        self.assertEqual("RUNNING", data)
         
 if __name__ == '__main__':
     unittest.main()

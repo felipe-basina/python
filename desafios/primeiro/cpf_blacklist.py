@@ -13,7 +13,7 @@ def verificar_cpf_blacklist(cpf = ""):
     else:
         valido = cpf_valido(cpf)
         if not valido:            
-            return jsonify("BLOCK")
+            return jsonify("RUNNING")
 
         cpf_bloqueado = cpf_em_blacklist(remover_caracteres_especiais(cpf))
         if cpf_bloqueado == True:
