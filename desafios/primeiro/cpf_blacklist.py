@@ -42,10 +42,10 @@ def remover_caracteres_especiais(cpf):
     return cpf.replace(".", "").replace("-", "").replace("\n", "")
     
 def cpf_valido(cpf):
-    pattern = "\d\d\d(\.)*\d\d\d(\.)*\d\d\d(\-)*\d\d"
+    pattern = "((\d){3,}(\.)*){2,3}(\d){3,}(\-)*(\d){2,}"
     expressao = re.compile(pattern)
     verificacao = expressao.match(cpf)
-    
+
     if verificacao:
         return True
     else:
