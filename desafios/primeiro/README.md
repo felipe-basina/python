@@ -1,24 +1,22 @@
 # Desafio
-Objetivo: verificar cpf confrontando com uma blacklist
+Objetivo: verificar cpf confrontando com uma blacklist <br />
+Referência: https://github.com/idwall/python-test
 
 ## Versão Python
  - `>= 3
 
 ## Procedimentos
- - Criar virtual environment <br />
- virtualenv venv
+ - Criar virtual environment <br /> virtualenv venv
 
- - Ativar virtual environment <br />
- venv\Scripts\Activate
+ - Ativar virtual environment <br /> venv\Scripts\activate
  
- - Instalar dependência <br />
- pip install flask
+ - Instalar dependência <br /> pip install flask
 
 ## Testes de unidade
- Executar <br />test_cpf_blacklist.py
+ Executar <br /> test_cpf_blacklist.py
  
 ## Aplicação
- Executar <br />cpf_blacklist.py
+ Executar <br /> cpf_blacklist.py
  
  - Exemplos de chamadas: <br />
  curl localhost:5000/00000000000
