@@ -2,16 +2,16 @@
 Objetivo: verificar cpf confrontando com uma blacklist
 
 ## Versão Python
- - >= 3
+ - `>= 3
 
 ## Procedimentos
- - Criar virtual environment
+ - Criar virtual environment 
  virtualenv venv
 
- - Ativar virtual environment
+ - Ativar virtual environment 
  venv\Scripts\Activate
  
- - Instalar dependência:
+ - Instalar dependência 
  pip install flask
 
 ## Testes de unidade
@@ -20,7 +20,7 @@ Objetivo: verificar cpf confrontando com uma blacklist
 ## Aplicação
  Executar cpf_blacklist.py
  
- - Exemplos de chamadas:
+ - Exemplos de chamadas: 
  curl localhost:5000/00000000000
  >> "BLOCK"
  
