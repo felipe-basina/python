@@ -29,7 +29,7 @@ def cpf_em_blacklist(cpf):
             return True
         else:
             return False
-                
+
     except Exception as ex:
         traceback.print_exc()
         return False
