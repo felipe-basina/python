@@ -19,6 +19,7 @@ Referência: https://github.com/idwall/python-test
  Executar <br /> cpf_blacklist.py
  
  - Exemplos de chamadas: <br />
+
  curl localhost:5000/00000000000
  >> "BLOCK"
  
