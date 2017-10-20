@@ -39,7 +39,6 @@ def remover_caracteres_especiais(cpf):
     
 def cpf_valido(cpf):
     verificacao = re.match("((\d){3,}(\.)*){2,3}(\d){3,}(\-)*(\d){2,}", cpf)
-    
     if verificacao:
         return True
     else:
