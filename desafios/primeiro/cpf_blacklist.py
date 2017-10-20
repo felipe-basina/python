@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/<string:cpf>", methods = ["GET"])
 @app.route("/", methods = ["GET"])
 def verificar_cpf_blacklist(cpf = ""):
-    if cpf == "":
+    if not cpf:
         return jsonify("RUNNING")
     else:
         valido = cpf_valido(cpf)
@@ -16,7 +16,7 @@ def verificar_cpf_blacklist(cpf = ""):
             return jsonify("RUNNING")
 
         cpf_bloqueado = cpf_em_blacklist(remover_caracteres_especiais(cpf))
-        if cpf_bloqueado == True:
+        if cpf_bloqueado:
             return jsonify("BLOCK")
         else:
             return jsonify("FREE")
