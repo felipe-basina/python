@@ -15,10 +15,10 @@ Objetivo: verificar cpf confrontando com uma blacklist
  pip install flask
 
 ## Testes de unidade
- Executar test_cpf_blacklist.py
+ Executar <br />test_cpf_blacklist.py
  
 ## Aplicação
- Executar cpf_blacklist.py
+ Executar <br />cpf_blacklist.py
  
  - Exemplos de chamadas: <br />
  curl localhost:5000/00000000000
