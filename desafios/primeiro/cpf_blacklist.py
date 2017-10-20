@@ -8,13 +8,9 @@ app = Flask(__name__)
 @app.route("/<string:cpf>", methods = ["GET"])
 @app.route("/", methods = ["GET"])
 def verificar_cpf_blacklist(cpf = ""):
-    if not cpf:
+    if not (cpf and cpf_valido(cpf)):
         return jsonify("RUNNING")
     else:
-        valido = cpf_valido(cpf)
-        if not valido:            
-            return jsonify("RUNNING")
-
         cpf_bloqueado = cpf_em_blacklist(remover_caracteres_especiais(cpf))
         if cpf_bloqueado:
             return jsonify("BLOCK")
@@ -42,10 +38,8 @@ def remover_caracteres_especiais(cpf):
     return cpf.replace(".", "").replace("-", "").replace("\n", "")
     
 def cpf_valido(cpf):
-    pattern = "((\d){3,}(\.)*){2,3}(\d){3,}(\-)*(\d){2,}"
-    expressao = re.compile(pattern)
-    verificacao = expressao.match(cpf)
-
+    verificacao = re.match("((\d){3,}(\.)*){2,3}(\d){3,}(\-)*(\d){2,}", cpf)
+    
     if verificacao:
         return True
     else:
