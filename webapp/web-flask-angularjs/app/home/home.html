@@ -4,7 +4,10 @@
    
    <div>
       <div ng-show="!isObjectEmpty()">
-        <h2><p>Welcome <strong>{{ user.name }}</strong></p></h2>
+        <h2>
+            <p>Hello <strong>{{ user.name }}</strong></p>
+            <p>{{ user.message }}</p>
+        </h2>
       </div>
        <div ng-show="isObjectEmpty()">
         <p><a class="btn btn-lg btn-success" href="#signup" role="button">Sign up today</a></p>

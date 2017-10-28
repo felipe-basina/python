@@ -1,0 +1,12 @@
+Referência: https://codehandbook.org/flask-angularjs-web-app-restful-api/
+
+Dependências:
+pip install flask
+pip install flask_cors
+
+Exemplos de request:
+curl -H "Content-Type:application/json" -d "{\"auth\":{\"username\": \"felipe.basina@gmail.com\", \"password\": \"1234\"}}" -X POST localhost:5000/login
+
+curl -H "Content-Type:application/json" -d "{\"user\":{\"username\": \"felipe.basina@gmail.com\", \"password\": \"1234\"}}" -X POST localhost:5000/register
+
+curl localhost:5000/users

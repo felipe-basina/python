@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify, json
+from flask_cors import CORS, cross_origin
 
 import traceback
 
 # Objeto Flask
 app = Flask(__name__)
+CORS(app)
 
 users = []
 default_password = "pass123"
@@ -13,40 +15,38 @@ def register_user():
     try:
     
         json_data = request.get_json()["user"]
-        print("json_data-> ", json_data)
         username = json_data['username']
-        password = json_data['password']
+        password = json_data['pass']
         
         if username in users:
-            return jsonify({"message": "User %s already registered!" % username, "user": username})
+            raise Exception("User %s already registered!" % username)
         else:
             users.append(username)
             return jsonify({"message": "User %s successfully registered!" % username, "user": username})
     
     except Exception as ex:
         traceback.print_exc()
-        return jsonify({"message": "It was not possible to register new User %s" % ex})
+        return jsonify({"message": str(ex)}), 404
 
 @app.route('/login', methods = ['POST'])
 def login_user():
     try:
     
         json_data = request.get_json()["auth"]
-        print("json_data-> ", json_data)
         username = json_data['username']
-        password = json_data['password']
+        password = json_data['pass']
         
         if username in users:
             if password == default_password:
                 return jsonify({"message": "Hello %s welcome back" % username, "user": username})
             else:
-                return jsonify({"message": "Your password is not correct. Try again", "user": username})
+                raise Exception("Your password is not correct. Try again")
         else:
-            return jsonify({"message": "User %s not found!" % username, "user": username})
+           raise Exception("User %s not found!" % username)
     
     except Exception as ex:
         traceback.print_exc()
-        return jsonify({"message": "It was not possible to login user - %s" % ex})
+        return jsonify({"message": str(ex)}), 404
         
 @app.route('/users', methods = ['GET'])
 def list_users():

@@ -21,7 +21,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     
     return {
         set: function(data) {
-           user.name = data.username;
+           user.name = data.user;
+           user.message = data.message;
         },
         get: function() {
             return user;
