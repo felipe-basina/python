@@ -1,0 +1,13 @@
+<div class="jumbotron">
+   <h1>AngularJS Web App</h1>
+   <p class="lead">AngularJS App Powered By Python Flask</p>
+   
+   <div>
+      <div ng-show="!isObjectEmpty()">
+        <h2><p>Welcome <strong>{{ user.name }}</strong></p></h2>
+      </div>
+       <div ng-show="isObjectEmpty()">
+        <p><a class="btn btn-lg btn-success" href="#signup" role="button">Sign up today</a></p>
+       </div> 
+   </div>
+</div>
