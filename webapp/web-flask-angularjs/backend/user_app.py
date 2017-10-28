@@ -14,7 +14,7 @@ default_password = "pass123"
 def register_user():
     try:
     
-        json_data = request.get_json()["user"]
+        json_data = request.get_json()["auth"]
         username = json_data['username']
         password = json_data['pass']
         
@@ -26,19 +26,19 @@ def register_user():
     
     except Exception as ex:
         traceback.print_exc()
-        return jsonify({"message": str(ex)}), 404
+        return jsonify({"message": str(ex)}), 400
 
 @app.route('/login', methods = ['POST'])
 def login_user():
     try:
     
-        json_data = request.get_json()["auth"]
+        json_data = request.get_json()["user"]
         username = json_data['username']
         password = json_data['pass']
         
         if username in users:
             if password == default_password:
-                return jsonify({"message": "Hello %s welcome back" % username, "user": username})
+                return jsonify({"message": "%s welcome back" % username, "user": username})
             else:
                 raise Exception("Your password is not correct. Try again")
         else:
@@ -46,13 +46,13 @@ def login_user():
     
     except Exception as ex:
         traceback.print_exc()
-        return jsonify({"message": str(ex)}), 404
+        return jsonify({"message": str(ex)}), 400
         
 @app.route('/users', methods = ['GET'])
 def list_users():
-    return jsonify({"users:": users})
+    return jsonify({"users": users})
 
-@app.route('/shutdown', methods=['GET'])
+@app.route('/shutdown', methods=['POST'])
 def shutdown():
     shutdown_server()
     return 'Server shutting down...'

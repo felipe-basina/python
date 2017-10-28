@@ -1,6 +1,8 @@
 Referência: https://codehandbook.org/flask-angularjs-web-app-restful-api/
 
-Dependências:
+Criar e ativar virtual environment
+
+Instalar dependências:
 pip install flask
 pip install flask_cors
 
