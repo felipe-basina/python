@@ -7,7 +7,6 @@ class CpfBlacklistCase(unittest.TestCase):
     test_app = None
 
     def setUp(self):
-        self.app = app.test_client()
         self.test_app = app.test_client()
         
     def test_verificar_cpf_blacklist_sem_cpf(self):       
