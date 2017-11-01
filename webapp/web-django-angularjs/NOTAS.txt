@@ -1,0 +1,6 @@
+Referência (artigo): http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html
+Referência (github): https://github.com/kevinastone/django-api-rest-and-angular
+
+Observação: para executar via terminal deve-se executar o seguinte comando com o virtualenvironment ativo:
+Referência: https://stackoverflow.com/questions/15556499/django-db-settings-improperly-configured-error
+python manage.py shell
