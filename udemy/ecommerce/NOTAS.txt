@@ -4,6 +4,9 @@
  - Criar virtualenvironment
  virtualenv venv
  
+ - Verificar as dependências atuais no virtualenv:
+ pip freeze
+ 
  - Instalar django
  pip install django
  
