@@ -1,0 +1,16 @@
+ - Abrir PowerShell como administrador e executar o seguinte comando:
+ Set-ExecutionPolicy Unrestricted -> escolher a opção (1 = Sim)
+ 
+ - Criar virtualenvironment
+ virtualenv venv
+ 
+ - Instalar django
+ pip install django
+ 
+ - No diretório do virtualenvironment criar diretório src
+ 
+ - No diretório src executar comando:
+ django-admin.py startproject cfehome .
+ 
+ - Subir o servidor. O ambiente estará disponível no endereço (localhost:8000):
+ python manage.py runserver
