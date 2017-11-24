@@ -17,3 +17,9 @@
  
  - Subir o servidor. O ambiente estará disponível no endereço (localhost:8000):
  python manage.py runserver
+ 
+ - Criar as migrações
+ manage.py migrate
+ 
+ - Criar usuário admin
+ manage.py createsuperuser (admin - secret00)
