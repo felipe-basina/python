@@ -23,3 +23,7 @@
  
  - Criar usuário admin
  manage.py createsuperuser (admin - secret00)
+ 
+ - Disponibilizar os arquivos estáticos
+ manage.py collectstatic
+ Observação: esse comando deve ser executado toda vez que algum arquivo estático (css, js, imgs) for adicionado no diretório do projeto (static_my_project)
