@@ -21,12 +21,18 @@ from django.contrib import admin
 
 from .views import home_page, about_page, contact_page, login_page, register_page
 
+from products.views import ProductListView, product_list_view, ProductDetailView, product_detail_view
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about/', about_page),
     url(r'^contact/', contact_page),
     url(r'^login/', login_page),
     url(r'^register/', register_page),
+    url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
+    url(r'^products-fbv/(?P<pk>\d+)/$', product_detail_view),
+    url(r'^products/', ProductListView.as_view()),
+    url(r'^products-fbv/', product_list_view), #function based view
     url(r'^', home_page),
 ]
 
