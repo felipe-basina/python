@@ -63,7 +63,7 @@ def login_page(request):
             #print(request.user.is_authenticated())
             login(request, user)
             #context['form'] = LoginForm() # Reinicia a instancia
-            return redirect("/")
+            return redirect("/home")
         else:
             print("Error")
         

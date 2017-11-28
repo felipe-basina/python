@@ -34,3 +34,12 @@
  - Executar os migrations toda vez que uma classe model for alterada
  manage.py makemigrations
  manage.py migrate
+ 
+ - Instalar Pillow (biblioteca para upload de arquivos)
+ pip install Pillow
+ 
+ - Para conseguir realizar consultas na base de dados pelo terminal deve-se executar o seguinte comando:
+ manage.py shell
+ Exemplo de consulta:
+ from products.models import Product
+ queryset = Product.objects.all()
