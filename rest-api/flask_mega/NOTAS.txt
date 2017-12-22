@@ -1,0 +1,16 @@
+Referência: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+1. Criar virtual environment
+ virtualenv venv
+
+2. Instalar o flask
+ pip install flask
+
+2.1 Gerar o arquivo com as dependências
+ pip freeze > requirements.txt
+
+3. Executar a aplicação
+3.1 Definir a variável de ambiente:
+ set FLASK_APP=microblog.py
+ 3.2 Executar o comando
+  flask run
