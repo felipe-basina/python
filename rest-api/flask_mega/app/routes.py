@@ -21,7 +21,7 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-	form = LoginForm()
+	form = LoginForm(remember_me=True)
 	if form.validate_on_submit():
 		flash('Login for user {}, remember_me={}'.format(
 			form.username.data, form.remember_me.data))
