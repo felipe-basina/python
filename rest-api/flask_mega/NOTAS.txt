@@ -14,3 +14,7 @@ Referência: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-
  set FLASK_APP=microblog.py
  3.2 Executar o comando
   flask run
+
+Observação: para realizar o auto carregamento da aplicação ao alterar arquivos deve-se adicionar os seguintes comandos:
+ set FLASK_DEBUG=1
+ python -m flask run
