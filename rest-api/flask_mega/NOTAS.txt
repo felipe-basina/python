@@ -18,3 +18,14 @@ Referência: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-
 Observação: para realizar o auto carregamento da aplicação ao alterar arquivos deve-se adicionar os seguintes comandos:
  set FLASK_DEBUG=1
  python -m flask run
+
+ 4. Instalar dependências para base de dados
+ pip install flask-sqlalchemy
+ pip install flask-migrate
+
+ 5. Criar estrutura da base de dados
+ flask db init
+  5.1 Criar a migração mais recente
+  flask db migrate -m "users table"
+  5.2 Executar a migração
+  flask db upgrade
