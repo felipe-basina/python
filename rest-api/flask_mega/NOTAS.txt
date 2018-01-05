@@ -29,3 +29,5 @@ Observação: para realizar o auto carregamento da aplicação ao alterar arquivos d
   flask db migrate -m "users table"
   5.2 Executar a migração
   flask db upgrade
+
+ 6. Instalar flask-login
