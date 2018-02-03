@@ -38,6 +38,9 @@ class ProductManager(models.Manager):
     def features(self):
         return self.get_queryset().featured()
 
+    def featured(self):
+        return self.get_queryset().featured()
+
     def get_by_id(self, id):
         # Equiavalente chamar Product.objects...
         qs = self.get_queryset().filter(id=id)
