@@ -31,3 +31,6 @@ Observação: para realizar o auto carregamento da aplicação ao alterar arquivos d
   flask db upgrade
 
  6. Instalar flask-login
+
+ 7. Iniciando servidor local de email. Dessa forma, apesar do email não ser enviado, ele será impresso na console
+ python -m smtpd -n -c DebuggingServer localhost:8025

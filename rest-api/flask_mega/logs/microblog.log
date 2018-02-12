@@ -1,0 +1,43 @@
+2018-02-12 15:41:02,226 ERROR: Exception on /edit_profile [POST] [in d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\routes.py", line 89, in edit_profile
+    if form.validate_on_submit() and form.validate_username():
+TypeError: validate_username() missing 1 required positional argument: 'username'
+2018-02-12 15:43:54,466 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]
+2018-02-12 15:44:06,010 ERROR: Exception on /edit_profile [POST] [in d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\routes.py", line 89, in edit_profile
+    if form.validate_on_submit() and form.validate_username(form.username.data):
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\forms.py", line 39, in validate_username
+    if username.data != self.original_username:
+AttributeError: 'str' object has no attribute 'data'
+2018-02-12 15:45:46,499 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]
+2018-02-12 15:55:05,976 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]

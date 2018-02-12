@@ -1,0 +1,113 @@
+2018-02-12 15:24:46,236 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]
+2018-02-12 15:25:18,862 ERROR: Exception on /edit_profile [POST] [in d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\routes.py", line 92, in edit_profile
+    db.session.commit()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 937, in commit
+    self.transaction.commit()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 461, in commit
+    self._prepare_impl()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2237, in flush
+    self._flush(objects)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2363, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2327, in _flush
+    flush_context.execute()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 556, in execute
+    uow
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 177, in save_obj
+    mapper, table, update)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 768, in _emit_update_statements
+    execute(statement, multiparams)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
+    context)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username [SQL: 'UPDATE user SET username=?, about_me=? WHERE user.id = ?'] [parameters: ('fnascimento', 'System admin.', 4)] (Background on this error at: http://sqlalche.me/e/gkpj)
+2018-02-12 15:32:32,421 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]
+2018-02-12 15:38:45,692 INFO: Microblog startup [in D:\instalados\python\dev\python\rest-api\flask_mega\app\__init__.py:48]
+2018-02-12 15:39:57,309 ERROR: Exception on /edit_profile [POST] [in d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\routes.py", line 89, in edit_profile
+    if form.validate_on_submit() and form.validate_username():
+TypeError: validate_username() missing 1 required positional argument: 'username'
+2018-02-12 15:40:12,242 ERROR: Exception on /edit_profile [POST] [in d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\instalados\python\dev\python\rest-api\flask_mega\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\instalados\python\dev\python\rest-api\flask_mega\app\routes.py", line 89, in edit_profile
+    if form.validate_on_submit() and form.validate_username():
+TypeError: validate_username() missing 1 required positional argument: 'username'
