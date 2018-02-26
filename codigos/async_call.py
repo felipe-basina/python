@@ -10,8 +10,9 @@ def teste_thread():
   return 'Thread Executada com sucesso!'
 
 def exec():
-	async_call = pool.apply_async(teste_thread)
-	return async_call.get()
+    async_call = pool.apply_async(teste_thread)
+    print('Processando....')
+    return async_call.get()
   
 if __name__ == '__main__':
     print(exec())
