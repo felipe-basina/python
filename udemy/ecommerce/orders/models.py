@@ -4,6 +4,8 @@ from django.db.models.signals import pre_save, post_save
 from cfehome.utils import unique_order_id_generator
 from carts.models import Cart
 
+from decimal import *
+
 ORDER_STATUS_CHOICES = (
 	('created', 'Created'),
 	('paid', 'Paid'),
@@ -27,7 +29,7 @@ class Order(models.Model):
 	def update_total(self):
 		cart_total = self.cart.total
 		shipping_total = self.shipping_total
-		new_total = cart_total + shipping_total
+		new_total = cart_total + Decimal(shipping_total)
 		self.total = new_total
 		self.save()
 		return new_total
