@@ -19,8 +19,8 @@ def despesa_existente(id_despesa):
 	return any(despesa.id == id_despesa for despesa in despesas)
 
 def recuperar_despesa_por_id(id_despesa):
-	despesa = [despesa for despesa in despesas if despesa.id == id_despesa]
-	return despesa[0]
+    despesa = [despesa for despesa in despesas if despesa.id == id_despesa]
+    return despesa[0]
 
 if __name__ == '__main__':
 	criar_despesa()
