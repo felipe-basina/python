@@ -22,7 +22,7 @@
  manage.py migrate
  
  - Criar usuário admin
- manage.py createsuperuser (admin - secret00)
+ mana0ge.py createsuperuser (admin - secret00)
  
  - Disponibilizar os arquivos estáticos
  manage.py collectstatic

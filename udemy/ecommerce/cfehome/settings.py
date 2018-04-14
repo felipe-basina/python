@@ -39,11 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # our apps
+    'accounts',
+    'carts',
+    'orders',
     'products',
     'search',
     'tags',
-    'carts',
-    'orders',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGOUT_REDIRECT_URL = '/login/'
 ROOT_URLCONF = 'cfehome.urls'
 
 TEMPLATES = [
