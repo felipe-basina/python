@@ -1,0 +1,24 @@
+Pré requisitos:
+apt-get install python3-venv
+sudo apt-get install python3-pip
+
+1. Criar virtual environment
+sudo pip3 install virtualenv
+
+2. Ativar o virtual environment
+source venv/bin/activate
+
+2.1 Desativar o virtual environment
+deactivate
+
+3. Instalar o Flask
+pip3 install -U Flask
+
+4. Iniciar a aplicação
+4.1 Sem recarregar automático
+python3 git_rest.py
+
+4.2 Com recarregar automático
+export FLASK_APP=git_rest.py
+export FLASK_DEBUG=1
+flask run
