@@ -1,0 +1,14 @@
+### SOMA
+curl -XPOST -H "Content-type: application/json" -d '{"numbers": [10,20]}' 'http://localhost:5000/arith/sum'
+
+### SUBTRAÇÃO
+curl -XPOST -H "Content-type: application/json" -d '{"numbers": [10,20]}' 'http://localhost:5000/arith/substract'
+
+### MULTIPLICAÇÃO
+curl -XPOST -H "Content-type: application/json" -d '{"numbers": [10,20]}' 'http://localhost:5000/arith/multiply'
+
+### DIVISÃO
+curl -XPOST -H "Content-type: application/json" -d '{"numbers": [10,20]}' 'http://localhost:5000/arith/divide'
+
+### POTÊNCIA
+curl -XPOST -H "Content-type: application/json" -d '{"number": 10, "power": 2}' 'http://localhost:5000/arith/power'
