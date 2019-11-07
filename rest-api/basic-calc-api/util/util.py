@@ -13,7 +13,7 @@ def response_as_json(total, status_code=201, default_message=''):
         if default_message:
             message = default_message
     elif status_code == 500:        
-        message = "A valid number list should be provided"
+        message = "A list of valid numbers must be provided"
         if default_message:
             message = default_message        
 

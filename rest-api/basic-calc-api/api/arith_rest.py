@@ -74,10 +74,10 @@ def divide_remote():
 @arith_rest.route("/power", methods=["POST"])
 def power_remote():
     try:
-        number, power = get_number_and_power_from_request(request)
+        number, power = get_number_andPO_power_from_request(request)
         
         total = pow(number, power)
 
         return response_as_json(total)
     except:
-        return response_as_json(None, 500, 'A valid NUMBER and POWER should be provided')
+        return response_as_json(None, 500, 'A valid NUMBER and POWER must be provided')
