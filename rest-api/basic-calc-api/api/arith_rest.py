@@ -74,7 +74,7 @@ def divide_remote():
 @arith_rest.route("/power", methods=["POST"])
 def power_remote():
     try:
-        number, power = get_number_andPO_power_from_request(request)
+        number, power = get_number_and_power_from_request(request)
         
         total = pow(number, power)
 
