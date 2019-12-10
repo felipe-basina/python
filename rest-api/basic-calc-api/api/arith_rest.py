@@ -2,6 +2,10 @@ from flask import request, Blueprint
 
 arith_rest = Blueprint('arith_rest', __name__)
 
+EMPTY_LIST = "Empty list"
+DIVISION_BY_ZERO_NOT_ALLOWED = "Division by ZERO is not allowed"
+VALID_NUMBER_LIST = "A list of valid numbers must be provided"
+
 @arith_rest.route("/sum", methods=["POST"])
 def sum_remote():
     try:
@@ -60,7 +64,7 @@ def divide_remote():
             total = numbers[0]
             for index in range(1, len(numbers)):
                 if numbers[index] == 0:
-                    return response_as_json(None, 400, 'Division by ZERO is not allowed')
+                    return response_as_json(None, 400, DIVISION_BY_ZERO_NOT_ALLOWED)
                 total = total / numbers[index]
         else:
             total = numbers[0]
@@ -91,11 +95,11 @@ def get_number_and_power_from_request(request):
 def response_as_json(total, status_code=201, default_message=''):
     message = total
     if status_code == 400:
-        message = "Empty list"
+        message = EMPTY_LIST
         if default_message:
             message = default_message
     elif status_code == 500:        
-        message = "A list of valid numbers must be provided"
+        message = VALID_NUMBER_LIST
         if default_message:
             message = default_message        
 
