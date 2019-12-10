@@ -1,4 +1,4 @@
-from flask import request, Blueprint
+from flask import jsonify, request, Blueprint
 
 arith_rest = Blueprint('arith_rest', __name__)
 
@@ -103,5 +103,4 @@ def response_as_json(total, status_code=201, default_message=''):
         if default_message:
             message = default_message        
 
-    from flask import jsonify
     return jsonify({"result": message}), status_code
