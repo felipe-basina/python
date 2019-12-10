@@ -12,3 +12,6 @@ curl -XPOST -H "Content-type: application/json" -d '{"numbers": [10,20]}' 'http:
 
 ### POTÊNCIA
 curl -XPOST -H "Content-type: application/json" -d '{"number": 10, "power": 2}' 'http://localhost:5000/arith/power'
+
+### EXECUTAR TESTES DE UNIDADE
+py.test
