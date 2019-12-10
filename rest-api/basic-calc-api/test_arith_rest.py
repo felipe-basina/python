@@ -108,3 +108,6 @@ class ArithRest(unittest.TestCase):
         self.assertIn(self.APPLICATION_JSON, response.content_type)
         self.assertIn(self.RESULT, data)                                        
         self.assertEqual(data[self.RESULT], 8)
+
+if __name__ == '__main__':
+    unittest.main()

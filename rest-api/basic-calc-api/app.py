@@ -9,4 +9,5 @@ app.register_blueprint(arith_rest, url_prefix = '/arith')
 def ping():
     return jsonify({"message": "pong"})
 
-app.run(debug = True)
+if __name__ == "__main__":
+    app.run(debug = True)
