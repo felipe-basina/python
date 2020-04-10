@@ -1,4 +1,4 @@
-from functools import reduce, partial
+from functools import reduce
 
 def count_terms(names, term):
     value = reduce(lambda x, y: x + y, 
