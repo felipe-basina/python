@@ -1,0 +1,15 @@
+#### Iniciar o docker compose: kafka + zookeeper
+sudo docker-compose up
+
+#### Produtor
+ 1. Criar virtual environment: virtualenv python venv
+ 2. Ativar virtual environment: source venv/bin/activate
+ 3. Instalar dependências: pip install -r requirements.txt
+ 4. Iniciar o produtor de mensagens: python producer/producer.py
+ 4. Desativar o virtual environment: deactivate
+
+#### Consumidor
+ 1. Instalar dependência para integração com o kafka: npm install no-kafka
+ 2. Iniciar os consumidores:
+    - nodemon consumer/consumer_avg.js
+    - nodemon consumer/consumer_sum.js
