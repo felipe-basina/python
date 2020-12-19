@@ -36,7 +36,7 @@ class BinarySearchTree:
 
 def pre_order(root):
     if root:
-        print root.info,
+        print root,
         if root.left and root.right:
             pre_order(root.left)
             pre_order(root.right)
